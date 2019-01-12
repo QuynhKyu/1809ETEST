@@ -10,7 +10,8 @@
 <?php
     $web = isset($_REQUEST["web"]) ? $_REQUEST["web"] : '';
     if (isset($_REQUEST["web"])){
-        header("Location:");
+        $url = $_REQUEST['web'];
+        header("Location:" .$url);
     }
 ?>
 <form name="aa" method="post" action="">
