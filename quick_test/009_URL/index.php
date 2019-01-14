@@ -10,11 +10,31 @@
     URL giả định : index.php?controller=post&action=edit&id=100&return_page=abc.php
 </h1>
 <?php
-echo "<pre>";
-print_r($_REQUEST);
-echo "</pre>";
+$controller = isset($_REQUEST["controller"]) ? (int) $_REQUEST["controller"] : '';
+$action = isset($_REQUEST["action"]) ? (int) $_REQUEST["action"] : '';
+$id = isset($_REQUEST["id"]) ? (int) $_REQUEST["id"] : '';
+$return_page = isset($_REQUEST["return_page"]) ? (int) $_REQUEST["return_page"] : '';
+if(isset($_REQUEST["controller"]) && isset($_REQUEST["action"]) && isset($_REQUEST["id"]) && isset($_REQUEST["return_page"])){
+        echo '<br>';
+        echo '<br>';
+        echo '<br>';
+        echo $_REQUEST['controller'];
+        echo '<br>';
+        echo $_REQUEST['action'];
+        echo '<br>';
+        echo $_REQUEST['id'];
+        echo '<br>';
+        echo $_REQUEST['return_page'];
+        echo '<br>';
+}
 ?>
-
+<form action="" method="get">
+    <input type="text" name="controller" value="post">
+    <input type="text" name="action" value="edit">
+    <input type="text" name="id" value="100">
+    <input type="text" name="return_page" value="abc.php">
+    <input type="submit" name="submit" value="Submit">
+</form>
 
 
 </body>

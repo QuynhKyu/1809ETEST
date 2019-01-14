@@ -3,6 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style type="text/css">
+        table th{
+            border-left: 1px solid black;
+            border-bottom: 1px solid black;
+            width: 150px;
+        }
+        table td{
+            border-left: 1px solid black;
+            text-align: center;
+            border-bottom: 1px solid black;
+        }
+    </style>
 </head>
 <body>
 <div>1 . Cho bạn 1 mảng
@@ -24,39 +36,56 @@
 <br>
 <br>
 <?php
-$student = array('01' => array('name' => 'Nguyễn văn anh', 'age' => 21, 'point' => 7),
-                 '02' => array('name' => 'Nguyễn thi hoa', 'age' => 23, 'point' => 8),
-                 '03' => array('name' => 'Nguyễn văn tuấn', 'age' => 24, 'point' => 9),
-                 '04' => array('name' => 'Lê văn thuận', 'age' => 25, 'point' => 7),
-                 '05' => array('name' => 'Trịnh quang anh', 'age' => 26, 'point' => 1),
-                 '06' => array('name' => 'Lê thuỳ linh', 'age' => 28, 'point' => 3),
-                 '07' => array('name' => 'Lê thuỳ trang', 'age' => 25, 'point' => 5),
-                 '08' => array('name' => 'Vũ đình hùng', 'age' => 20, 'point' => 8),
-                 '09' => array('name' => 'Lê văn an', 'age' => 19, 'point' => 9),
-                );
+$student = array();
+$student[] = array('name' => 'Nguyễn văn anh', 'age' => 21, 'point' => 7);
+$student[] = array('name' => 'Nguyễn thi hoa', 'age' => 23, 'point' => 8);
+$student[] = array('name' => 'Nguyễn văn tuấn', 'age' => 24, 'point' => 9);
+$student[] = array('name' => 'Lê văn thuận', 'age' => 25, 'point' => 7);
+$student[] = array('name' => 'Trịnh quang anh', 'age' => 26, 'point' => 1);
+$student[] = array('name' => 'Lê thuỳ linh', 'age' => 28, 'point' => 3);
+$student[] = array('name' => 'Lê thuỳ trang', 'age' => 25, 'point' => 5);
+$student[] = array('name' => 'Vũ đình hùng', 'age' => 20, 'point' => 8);
+$student[] = array('name' => 'Lê văn an', 'age' => 19, 'point' => 9);
 
-if(!empty($student)){
-    array_multisort($student);
-    foreach ($student as $key => $value){
-        $name =  $value["name"];
-        $age =   $value["age"];
-        $point = $value["point"];
-
-        echo "<table>".
-             "<tr>Name: </tr>".
-                "<td>". $name . "</td>".
-             "<tr>- Tuổi: </tr> ".
-                "<td>". $age . "</td>".
-             "<tr> - Điểm: </tr> ".
-                "<td>". $point ."</td>".
-            "<br />".
-             "</table>";
+$XL = array();
+foreach ($student as $key => $value){
+    array_push($student[$key], "XepLoai");
+    if($value['point']>=8){
+        $XL[$key] = 'Giỏi';
+    }elseif (6 <= $value['point'] && $value['point'] < 8){
+        $XL[$key] = 'Khá';
+    }else{
+        $XL[$key] = 'Trung Bình';
     }
-
 }
 ?>
 
-
+<table style="border: 1px solid black">
+    <thead>
+    <th>Họ Và Tên</th>
+    <th>Tuổi</th>
+    <th>Điểm Số</th>
+    <th>Xếp Loại</th>
+    </thead>
+    <?php
+    foreach ($student as $key => $value){
+        echo '<tbody>';
+        echo '<td>';
+        echo $value['name'];
+        echo '</td>';
+        echo '<td>';
+        echo $value['age'];
+        echo '</td>';
+        echo '<td>';
+        echo $value['point'];
+        echo '</td>';
+        echo '<td>';
+        echo $XL[$key];
+        echo '</td>';
+        echo '</tbody>';
+    }
+    ?>
+</table>
 
 </body>
 </html>
